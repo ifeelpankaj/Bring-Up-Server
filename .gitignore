@@ -40,3 +40,21 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+# Environment files (NEVER commit these)
+.env
+.env.*
+.env*.local
+*.env
+!*.env.example
+!example.env
+libs/config/src/env/development.env
+libs/config/src/env/production.env
+
+# Firebase Admin SDK keys (NEVER commit these)
+*firebase-adminsdk*.json
+!*firebase-adminsdk*.json.example
+
+# Logs
+logs/
+*.log

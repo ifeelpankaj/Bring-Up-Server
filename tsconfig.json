@@ -8,6 +8,30 @@
     },
     {
       "path": "./apps/api"
+    },
+    {
+      "path": "./libs/auth"
+    },
+    {
+      "path": "./libs/logger"
+    },
+    {
+      "path": "./libs/shared"
+    },
+    {
+      "path": "./libs/database"
+    },
+    {
+      "path": "./libs/config"
+    },
+    {
+      "path": "./libs/tasks"
+    },
+    {
+      "path": "./libs/alert"
+    },
+    {
+      "path": "./libs/utils"
     }
   ]
 }

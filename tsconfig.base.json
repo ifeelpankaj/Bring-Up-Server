@@ -16,6 +16,17 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@bringup/source"]
+    "customConditions": ["@bringup/source"],
+    "baseUrl": ".",
+    "paths": {
+      "@bringup/alert": ["libs/alert/src/index.ts"],
+      "@bringup/auth": ["libs/auth/src/index.ts"],
+      "@bringup/config": ["libs/config/src/index.ts"],
+      "@bringup/database": ["libs/database/src/index.ts"],
+      "@bringup/logger": ["libs/logger/src/index.ts"],
+      "@bringup/shared": ["libs/shared/src/index.ts"],
+      "@bringup/tasks": ["libs/tasks/src/index.ts"],
+      "@bringup/utils": ["libs/utils/src/index.ts"]
+    }
   }
 }
