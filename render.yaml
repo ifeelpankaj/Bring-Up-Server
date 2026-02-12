@@ -1,0 +1,25 @@
+# Render Blueprint for Bringup API
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: bringup-api
+    runtime: node
+    plan: free # Change to 'starter' or higher for production
+    region: oregon # or your preferred region
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000 # Render assigns port via PORT env var
+      - key: ALLOWED_ORIGINS
+        sync: false # Set manually in Render dashboard
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_CLIENT_EMAIL
+        sync: false
+      - key: FIREBASE_PRIVATE_KEY
+        sync: false
