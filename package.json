@@ -6,7 +6,7 @@
     "dev": "npx nx run api:serve:development --no-inspect --output-style=stream",
     "start": "node scripts/start-production.js",
     "start:raw": "node apps/api/dist/main.js",
-    "build": "npx nx build api --configuration=production",
+    "build": "npx nx build api",
     "build:render": "npm run build",
     "render:env": "node scripts/generate-render-env.js",
     "render:env:file": "node scripts/generate-render-env.js --file",
