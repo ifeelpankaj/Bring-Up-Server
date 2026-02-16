@@ -53,7 +53,9 @@
     "eslint-config-prettier": "^10.0.0",
     "prettier": "~3.6.2",
     "typescript-eslint": "^8.40.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "@nx/eslint": "22.4.5",
+    "@nx/eslint-plugin": "22.4.5",
   },
   "workspaces": [
     "apps/*",
