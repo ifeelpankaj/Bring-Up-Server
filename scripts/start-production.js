@@ -15,6 +15,35 @@ const ENV_TARGET = path.join(
   '../libs/config/src/env/production.env',
 );
 
+// Keys the app actually needs
+const APP_ENV_KEYS = [
+  'NODE_ENV',
+  'PORT',
+  'ALLOWED_ORIGINS',
+  'FIREBASE_PROJECT_ID',
+  'FIREBASE_CLIENT_EMAIL',
+  'FIREBASE_PRIVATE_KEY',
+];
+
+// Generate .env from process.env (for Render / cloud deployments)
+function generateEnvFromProcessEnv() {
+  console.log(
+    '📦 No .env file found — generating from process.env (Render deployment)',
+  );
+
+  let content = '# Auto-generated from process.env\n';
+  content += `# Generated at: ${new Date().toISOString()}\n\n`;
+
+  for (const key of APP_ENV_KEYS) {
+    if (process.env[key] !== undefined) {
+      content += `${key}=${process.env[key]}\n`;
+    }
+  }
+
+  fs.writeFileSync(ENV_SOURCE, content, 'utf-8');
+  console.log('✅ .env file created from process.env:', ENV_SOURCE);
+}
+
 // Parse .env file content
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) {
@@ -64,6 +93,11 @@ function generateProductionEnv() {
     content += `${key}=${value}\n`;
   }
 
+  const envDir = path.dirname(ENV_TARGET);
+  if (!fs.existsSync(envDir)) {
+    fs.mkdirSync(envDir, { recursive: true });
+  }
+
   fs.writeFileSync(ENV_TARGET, content, 'utf-8');
   console.log('✅ Production environment generated:', ENV_TARGET);
 
@@ -100,6 +134,12 @@ function startServer() {
 // Main
 function main() {
   console.log('\n=== Bringup Production Startup ===\n');
+
+  // If no .env file exists, create one from process.env (Render injects vars there)
+  if (!fs.existsSync(ENV_SOURCE)) {
+    generateEnvFromProcessEnv();
+  }
+
   generateProductionEnv();
   console.log('');
   startServer();
